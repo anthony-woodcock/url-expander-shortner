@@ -21,7 +21,13 @@ function expandUrl(){
     console.log(textUrl)
 
     fetch(`https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAn_Yo9LabkG3IOTNWT30u_NiHkjUa2nHk&shortUrl=${textUrl}`)
-        .then(response => response.json())
+        .then(response => {
+            if(response.status !== 200) {
+                throw new Error('Response status not 200')
+            }
+
+            return response.json()
+        })
         .then(responseJson => console.log(responseJson))
 }
 
