@@ -18,16 +18,16 @@ document.getElementById('expand').addEventListener
 
 function expandUrl(){
     const textUrl = document.getElementById("urlInput").value
-    console.log(textUrl)
 
     fetch(`https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAn_Yo9LabkG3IOTNWT30u_NiHkjUa2nHk&shortUrl=${textUrl}`)
         .then(response => {
             if(response.status !== 200) {
-                throw new Error('Response status not 200')
+                throw new Error('Response status not 200, please enter a valid link')
             }
 
             return response.json()
         })
-        .then(responseJson => console.log(responseJson))
+        .then(responseJson => document.getElementById("returnLink").innerHTML = responseJson.longUrl)
+        
 }
 
