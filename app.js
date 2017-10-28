@@ -27,7 +27,7 @@ function expandUrl(){
 
             return response.json()
         })
-        .then(responseJson => document.getElementById("returnLink").innerHTML = responseJson.longUrl)
+        .then(responseJson => document.getElementById("urlInput").value = innerHTML = responseJson.longUrl)
         
 }
 
